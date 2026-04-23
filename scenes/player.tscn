@@ -1,0 +1,198 @@
+[gd_scene load_steps=18 format=3 uid="uid://buwbn7odiqhs7"]
+
+[ext_resource type="Script" uid="uid://dkkbg2hpblv7n" path="res://scenes/player.gd" id="1_3vyb7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u8vuu"]
+albedo_color = Color(0, 0.6620084, 0.07725812, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3vyb7"]
+material = SubResource("StandardMaterial3D_u8vuu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vyb7"]
+albedo_color = Color(0.2231029, 0.2231029, 0.22310287, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_g2els"]
+material = SubResource("StandardMaterial3D_3vyb7")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereMesh" id="SphereMesh_u8vuu"]
+material = SubResource("StandardMaterial3D_3vyb7")
+radius = 0.02
+height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhqgy"]
+albedo_color = Color(0.9897559, 0.66305476, 0.5939536, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_dqkch"]
+material = SubResource("StandardMaterial3D_qhqgy")
+radius = 0.03
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g2els"]
+albedo_color = Color(0.09803922, 0.654902, 0.13725491, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qhqgy"]
+material = SubResource("StandardMaterial3D_g2els")
+top_radius = 0.15
+bottom_radius = 0.3
+height = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3vyb7"]
+top_radius = 0.05
+bottom_radius = 0.0
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dqkch"]
+albedo_color = Color(0.12156863, 0.68235296, 0.16078432, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_qhqgy"]
+material = SubResource("StandardMaterial3D_dqkch")
+radius = 0.2
+height = 0.4
+
+[sub_resource type="Animation" id="Animation_3vyb7"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Nalguita1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.133813, -0.36220258, -0.46879858), Vector3(0.24012075, -0.36220258, -0.4687986), Vector3(0.133813, -0.36220258, -0.46879858)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Nalguita2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.12608488, -0.36220258, -0.46879858), Vector3(-0.21299453, -0.36220258, -0.46879855), Vector3(-0.12608488, -0.36220258, -0.46879858)]
+}
+
+[sub_resource type="Animation" id="Animation_g2els"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Nalguita1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.133813, -0.36220258, -0.46879858)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Nalguita2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.12608488, -0.36220258, -0.46879858)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qhqgy"]
+_data = {
+&"RESET": SubResource("Animation_g2els"),
+&"walk": SubResource("Animation_3vyb7")
+}
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 3
+script = ExtResource("1_3vyb7")
+
+[node name="name3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2197592, 0)
+billboard = 1
+text = "username
+"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_u8vuu")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_3vyb7")
+
+[node name="Eye" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12424147, 0.44974208, 0.5200293)
+mesh = SubResource("SphereMesh_g2els")
+
+[node name="Eye2" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19263661, 0.44974208, 0.5200293)
+mesh = SubResource("SphereMesh_g2els")
+
+[node name="Eye3" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.029745698, 0.44974208, 0.5200293)
+mesh = SubResource("SphereMesh_u8vuu")
+
+[node name="Pezón" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.19263661, 0.14573306, 0.34078282)
+mesh = SubResource("SphereMesh_dqkch")
+
+[node name="Pezón2" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.14149982, 0.14573306, 0.34078282)
+mesh = SubResource("SphereMesh_dqkch")
+
+[node name="Patita" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26606002, -0.71972114, 0.15013906)
+mesh = SubResource("CylinderMesh_qhqgy")
+
+[node name="uña" type="MeshInstance3D" parent="Body/Patita"]
+transform = Transform3D(1.2456628, -0.23873492, -1.1379679e-07, 1.1274085e-07, -4.031941e-08, 1.1883882, -0.33377445, -0.8909705, -2.328679e-08, 0.09191047, -0.20358378, 0.28189057)
+mesh = SubResource("CylinderMesh_3vyb7")
+
+[node name="uña2" type="MeshInstance3D" parent="Body/Patita"]
+transform = Transform3D(1.2396674, -8.742278e-08, -1.01464686e-07, 1.0837517e-07, -4.371139e-08, 1.1606207, -1.0837517e-07, -1, -5.0732336e-08, -0.041192144, -0.20358378, 0.29482773)
+mesh = SubResource("CylinderMesh_3vyb7")
+
+[node name="uña3" type="MeshInstance3D" parent="Body/Patita"]
+transform = Transform3D(1.245309, 0.21022666, -0.008745236, 1.1099115e-07, 0.03741695, 1.2574332, 0.25112084, -1.0425147, 0.0433671, -0.1624009, -0.20358378, 0.2436052)
+mesh = SubResource("CylinderMesh_3vyb7")
+
+[node name="Patita2" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29058012, -0.71972114, 0.150139)
+mesh = SubResource("CylinderMesh_qhqgy")
+
+[node name="uña" type="MeshInstance3D" parent="Body/Patita2"]
+transform = Transform3D(1.2456628, -0.23873492, -1.1379679e-07, 1.1274085e-07, -4.031941e-08, 1.1883882, -0.33377445, -0.8909705, -2.328679e-08, 0.09191047, -0.20358378, 0.28189057)
+mesh = SubResource("CylinderMesh_3vyb7")
+
+[node name="uña2" type="MeshInstance3D" parent="Body/Patita2"]
+transform = Transform3D(1.2396674, -8.742278e-08, -1.01464686e-07, 1.0837517e-07, -4.371139e-08, 1.1606207, -1.0837517e-07, -1, -5.0732336e-08, -0.041192144, -0.20358378, 0.29482773)
+mesh = SubResource("CylinderMesh_3vyb7")
+
+[node name="uña3" type="MeshInstance3D" parent="Body/Patita2"]
+transform = Transform3D(1.245309, 0.21022666, -0.008745236, 1.1099115e-07, 0.03741695, 1.2574332, 0.25112084, -1.0425147, 0.0433671, -0.1624009, -0.20358378, 0.2436052)
+mesh = SubResource("CylinderMesh_3vyb7")
+
+[node name="Nalguita1" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.133813, -0.36220258, -0.46879858)
+mesh = SubResource("SphereMesh_qhqgy")
+
+[node name="Nalguita2" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12608488, -0.36220258, -0.46879858)
+mesh = SubResource("SphereMesh_qhqgy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qhqgy")
+}
+autoplay = "walk"

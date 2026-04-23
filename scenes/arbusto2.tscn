@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://crhmpaiesw46r"]
+
+[ext_resource type="PackedScene" uid="uid://bsytljta2kgbp" path="res://assets/gltf/Bush_1_F_Color1.gltf" id="1_0v2l5"]
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+
+[node name="Bush_1_F_Color12" parent="." instance=ExtResource("1_0v2l5")]

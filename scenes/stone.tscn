@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://doavaer2ev1wd"]
+
+[ext_resource type="PackedScene" uid="uid://bjfjsmrasv32o" path="res://assets/gltf/Rock_1_F_Color1.gltf" id="1_hmdus"]
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+
+[node name="Rock_1_F_Color12" parent="." instance=ExtResource("1_hmdus")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)

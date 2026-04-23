@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwi56ftenk66m"]
+
+[ext_resource type="PackedScene" uid="uid://gqfqrlha7b8v" path="res://assets/gltf/Bush_1_A_Color1.gltf" id="1_rme6i"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qxw88"]
+height = 0.9915314
+radius = 0.54833984
+
+[node name="StaticBody3D" type="StaticBody3D"]
+
+[node name="Bush_1_A_Color12" parent="." instance=ExtResource("1_rme6i")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43138885, 0)
+shape = SubResource("CylinderShape3D_qxw88")

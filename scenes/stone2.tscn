@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyic8yatnueq0"]
+
+[ext_resource type="PackedScene" uid="uid://7wy85h24ppub" path="res://assets/gltf/Rock_1_K_Color1.gltf" id="1_objkc"]
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+
+[node name="Rock_1_K_Color12" parent="." instance=ExtResource("1_objkc")]

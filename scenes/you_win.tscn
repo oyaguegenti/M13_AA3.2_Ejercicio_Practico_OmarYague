@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://odiej0yinlr6"]
+
+[ext_resource type="Script" uid="uid://b5jel6na80jvp" path="res://scenes/you_win.gd" id="1_iblaa"]
+
+[node name="YouWin" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iblaa")
+
+[node name="Frase" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 318.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 96
+bbcode_enabled = true
+text = "[rainbow][shake][wave]Haber Estudiao
+👌[/wave][/shake][/rainbow]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -158.0
+offset_top = -227.0
+offset_right = 158.0
+offset_bottom = -154.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Reiniciar"
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -158.0
+offset_top = -123.0
+offset_right = 158.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Exit"
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

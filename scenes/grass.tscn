@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c12wpxuxjh2se"]
+
+[ext_resource type="PackedScene" uid="uid://nexirno6asga" path="res://assets/gltf/Grass_1_C_Color1.gltf" id="1_e1kak"]
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+
+[node name="Grass_1_C_Color12" parent="." instance=ExtResource("1_e1kak")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)

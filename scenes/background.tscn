@@ -1,0 +1,192 @@
+[gd_scene load_steps=15 format=3 uid="uid://jdp0anxr2hvg"]
+
+[ext_resource type="PackedScene" uid="uid://cwi56ftenk66m" path="res://scenes/Arbusto1.tscn" id="1_wax1t"]
+[ext_resource type="PackedScene" uid="uid://crhmpaiesw46r" path="res://scenes/arbusto2.tscn" id="2_1tmhi"]
+[ext_resource type="PackedScene" uid="uid://d0e2evxpykh5x" path="res://scenes/grass2.tscn" id="3_l5f8m"]
+[ext_resource type="PackedScene" uid="uid://c12wpxuxjh2se" path="res://scenes/grass.tscn" id="4_6vm3t"]
+[ext_resource type="PackedScene" uid="uid://doavaer2ev1wd" path="res://scenes/stone.tscn" id="5_8efq7"]
+[ext_resource type="PackedScene" uid="uid://cyic8yatnueq0" path="res://scenes/stone2.tscn" id="6_da6cc"]
+[ext_resource type="Script" uid="uid://dolw51rstii58" path="res://scenes/camera_pivot.gd" id="7_1tmhi"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o5a4c"]
+sky_top_color = Color(0.8862745, 0.5764706, 1, 1)
+sky_horizon_color = Color(1, 0.5102407, 0.34715113, 1)
+sky_curve = 0.28978062
+ground_bottom_color = Color(0.8816656, 0.40041927, 0.64058006, 1)
+ground_horizon_color = Color(0.94923586, 0.5553406, 0.30701715, 1)
+
+[sub_resource type="Sky" id="Sky_gi7kc"]
+sky_material = SubResource("ProceduralSkyMaterial_o5a4c")
+
+[sub_resource type="Environment" id="Environment_bkp1e"]
+background_mode = 2
+sky = SubResource("Sky_gi7kc")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gi7kc"]
+albedo_color = Color(0.55256206, 0.8682603, 0.4665426, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_b6e46"]
+material = SubResource("StandardMaterial3D_gi7kc")
+size = Vector3(100, 0.1, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_td6w2"]
+size = Vector3(100, 0.1, 100)
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_wax1t"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 16.12
+
+[node name="Background" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.5459598, 0.5147573, -0.6610241, -0.8363599, -0.28843316, 0.46616405, 0.04930007, 0.80736077, 0.58799523, 0, -2.952283, 0)
+light_color = Color(1, 0.8892826, 0.43522736, 1)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bkp1e")
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_b6e46")
+
+[node name="FloorStaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/FloorStaticBody3D"]
+shape = SubResource("BoxShape3D_td6w2")
+
+[node name="Decorations" type="Node3D" parent="."]
+
+[node name="StaticBody3D" parent="Decorations" instance=ExtResource("1_wax1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.79444647, 0.061724477, -13.26284)
+
+[node name="MeshInstance3D" parent="Decorations" instance=ExtResource("2_1tmhi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.512508, 0.11100523, -8.94273)
+
+[node name="MeshInstance3D2" parent="Decorations" instance=ExtResource("3_l5f8m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.037258, 0.24095595, -29.657402)
+
+[node name="MeshInstance3D3" parent="Decorations" instance=ExtResource("4_6vm3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.691664, 0.19830468, -15.390235)
+
+[node name="MeshInstance3D4" parent="Decorations" instance=ExtResource("3_l5f8m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.270718, 0.24095595, -32.165657)
+
+[node name="MeshInstance3D5" parent="Decorations" instance=ExtResource("4_6vm3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.220888, 0.19830468, 5.673565)
+
+[node name="MeshInstance3D6" parent="Decorations" instance=ExtResource("4_6vm3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.52951, 0.19830468, 36.177948)
+
+[node name="MeshInstance3D7" parent="Decorations" instance=ExtResource("4_6vm3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.501873, 0.19830468, 25.018782)
+
+[node name="MeshInstance3D8" parent="Decorations" instance=ExtResource("4_6vm3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.195343, 0.19830468, 32.05945)
+
+[node name="MeshInstance3D9" parent="Decorations" instance=ExtResource("4_6vm3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.452724, 0.19830468, -31.397285)
+
+[node name="MeshInstance3D10" parent="Decorations" instance=ExtResource("4_6vm3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.610619, 0.19830468, 19.378298)
+
+[node name="MeshInstance3D11" parent="Decorations" instance=ExtResource("4_6vm3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.430508, 0.19830468, 23.796064)
+
+[node name="MeshInstance3D12" parent="Decorations" instance=ExtResource("3_l5f8m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.080738, 0.24095976, 42.44039)
+
+[node name="MeshInstance3D13" parent="Decorations" instance=ExtResource("3_l5f8m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.741787, 0.24095976, 40.314278)
+
+[node name="MeshInstance3D14" parent="Decorations" instance=ExtResource("3_l5f8m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.004124, 0.24095976, 40.371086)
+
+[node name="MeshInstance3D15" parent="Decorations" instance=ExtResource("3_l5f8m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.125694, 0.24095976, -13.455182)
+
+[node name="MeshInstance3D16" parent="Decorations" instance=ExtResource("3_l5f8m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.89417, 0.24095976, -24.680763)
+
+[node name="MeshInstance3D17" parent="Decorations" instance=ExtResource("3_l5f8m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.1759, 0.24095976, 7.82848)
+
+[node name="MeshInstance3D18" parent="Decorations" instance=ExtResource("3_l5f8m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.558586, 0.24095976, -32.300175)
+
+[node name="MeshInstance3D19" parent="Decorations" instance=ExtResource("3_l5f8m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.741631, 0.24095976, 19.046804)
+
+[node name="MeshInstance3D20" parent="Decorations" instance=ExtResource("3_l5f8m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.754745, 0.24095976, 14.564053)
+
+[node name="MeshInstance3D21" parent="Decorations" instance=ExtResource("3_l5f8m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.79039, 0.24095976, -3.532825)
+
+[node name="MeshInstance3D22" parent="Decorations" instance=ExtResource("3_l5f8m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.175972, 0.24095976, -25.958235)
+
+[node name="MeshInstance3D23" parent="Decorations" instance=ExtResource("3_l5f8m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.21859, 0.24095976, -41.256638)
+
+[node name="MeshInstance3D24" parent="Decorations" instance=ExtResource("2_1tmhi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.576633, 0.11100905, 29.201033)
+
+[node name="MeshInstance3D25" parent="Decorations" instance=ExtResource("2_1tmhi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.875004, 0.11100905, -17.97363)
+
+[node name="StaticBody3D2" parent="Decorations" instance=ExtResource("1_wax1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7869873, 0.061727338, 31.68729)
+
+[node name="StaticBody3D3" parent="Decorations" instance=ExtResource("1_wax1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.97718, 0.061727338, -12.7483015)
+
+[node name="StaticBody3D4" parent="Decorations" instance=ExtResource("1_wax1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.173645, 0.061727338, 6.312246)
+
+[node name="StaticBody3D5" parent="Decorations" instance=ExtResource("1_wax1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.20792, 0.061727338, 20.646181)
+
+[node name="StaticBody3D6" parent="Decorations" instance=ExtResource("1_wax1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.51542, 0.061727338, 30.484804)
+
+[node name="StaticBody3D7" parent="Decorations" instance=ExtResource("1_wax1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.044563, 0.061727338, 36.85036)
+
+[node name="StaticBody3D8" parent="Decorations" instance=ExtResource("1_wax1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.92202, 0.061727338, 3.8403983)
+
+[node name="StaticBody3D9" parent="Decorations" instance=ExtResource("1_wax1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8208466, 0.061727338, -41.25616)
+
+[node name="StaticBody3D10" parent="Decorations" instance=ExtResource("1_wax1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.074337, 0.061727338, -41.4865)
+
+[node name="MeshInstance3D26" parent="Decorations" instance=ExtResource("5_8efq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.36312, 0.05000305, -3.331016)
+
+[node name="MeshInstance3D27" parent="Decorations" instance=ExtResource("5_8efq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.236496, 0.05000305, 35.54311)
+
+[node name="MeshInstance3D28" parent="Decorations" instance=ExtResource("6_da6cc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.08652, 0.05000305, -40.93368)
+
+[node name="MeshInstance3D29" parent="Decorations" instance=ExtResource("6_da6cc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.787239, 0.05000305, 8.821942)
+
+[node name="MeshInstance3D30" parent="Decorations" instance=ExtResource("5_8efq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.923721, 0.05000305, -31.029821)
+
+[node name="MeshInstance3D31" parent="Decorations" instance=ExtResource("5_8efq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.715347, 0.05000305, -12.986139)
+
+[node name="MeshInstance3D32" parent="Decorations" instance=ExtResource("5_8efq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.3034, 0.05000305, 30.466076)
+
+[node name="CameraPivot" type="Node3D" parent="."]
+script = ExtResource("7_1tmhi")
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.6633387, 0.74831927, 0, -0.74831927, 0.6633387, 0, 25.129892, 33.64823)
+attributes = SubResource("CameraAttributesPractical_wax1t")

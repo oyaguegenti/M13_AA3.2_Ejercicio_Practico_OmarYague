@@ -1,0 +1,95 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0cxx168q8shn"]
+
+[ext_resource type="Script" uid="uid://tnkjjxmqfjx" path="res://scenes/preferences.gd" id="1_gyaf3"]
+[ext_resource type="Texture2D" uid="uid://bryj6t2uo42f0" path="res://assets/textures/bsod.png" id="2_pmysl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xl0yi"]
+
+[node name="Preferences" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.40382224, 0.26639718, 0.096145295, 0.76862746)
+script = ExtResource("1_gyaf3")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 48
+text = "Preferences"
+
+[node name="HSeparator3" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xl0yi")
+
+[node name="VolumeTitle" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+text = "Volume"
+horizontal_alignment = 1
+
+[node name="VolumeSlider" type="HSlider" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="HSeparator2" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xl0yi")
+
+[node name="ScreenTitle" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+text = "Screen"
+horizontal_alignment = 1
+
+[node name="FullScreenBox" type="CheckBox" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 24
+text = "Full Screen"
+alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xl0yi")
+
+[node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(160, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[node name="BSOD" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pmysl")
+
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="toggled" from="CenterContainer/VBoxContainer/FullScreenBox" to="." method="_on_full_screen_box_toggled"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
