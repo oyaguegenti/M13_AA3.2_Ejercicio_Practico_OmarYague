@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://clvusub07d4i8"]
+
+[ext_resource type="Script" uid="uid://doxj14xnuh4ef" path="res://assets/db/db.gd" id="1_0bmv1"]
+
+[node name="DataBase" type="Node"]
+script = ExtResource("1_0bmv1")
+data_base_file = "res://assets/db/mentirosillo.db"
