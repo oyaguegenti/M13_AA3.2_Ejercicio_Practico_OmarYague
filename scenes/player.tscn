@@ -1,10 +1,14 @@
-[gd_scene load_steps=20 format=3 uid="uid://buwbn7odiqhs7"]
+[gd_scene load_steps=26 format=3 uid="uid://buwbn7odiqhs7"]
 
 [ext_resource type="Script" uid="uid://dkkbg2hpblv7n" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://byyy5ue8cbi8l" path="res://assets/textures/dragon-scales_albedo.png" id="2_dqkch"]
 [ext_resource type="AudioStream" uid="uid://duf0pmym8ln4c" path="res://audio/footsteps.wav" id="2_g2els"]
 [ext_resource type="AudioStream" uid="uid://cwb5rtaptwr0j" path="res://audio/jump.wav" id="3_qhqgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qlg0r"]
+albedo_texture = ExtResource("2_dqkch")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u8vuu"]
 albedo_color = Color(0, 0.6620084, 0.07725812, 1)
@@ -33,8 +37,12 @@ material = SubResource("StandardMaterial3D_qhqgy")
 radius = 0.03
 height = 0.5
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tuyoq"]
+albedo_texture = ExtResource("2_dqkch")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g2els"]
 albedo_color = Color(0.09803922, 0.654902, 0.13725491, 1)
+albedo_texture = ExtResource("2_dqkch")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_qhqgy"]
 material = SubResource("StandardMaterial3D_g2els")
@@ -47,6 +55,12 @@ top_radius = 0.05
 bottom_radius = 0.0
 height = 0.1
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fjrip"]
+albedo_texture = ExtResource("2_dqkch")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_smehm"]
+albedo_texture = ExtResource("2_dqkch")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dqkch"]
 albedo_color = Color(0.12156863, 0.68235296, 0.16078432, 1)
 
@@ -54,6 +68,9 @@ albedo_color = Color(0.12156863, 0.68235296, 0.16078432, 1)
 material = SubResource("StandardMaterial3D_dqkch")
 radius = 0.2
 height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ur7pv"]
+albedo_texture = ExtResource("2_dqkch")
 
 [sub_resource type="Animation" id="Animation_g2els"]
 length = 0.001
@@ -131,6 +148,7 @@ shape = SubResource("CapsuleShape3D_u8vuu")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_qlg0r")
 mesh = SubResource("CapsuleMesh_3vyb7")
 
 [node name="Eye" type="MeshInstance3D" parent="Body"]
@@ -155,6 +173,7 @@ mesh = SubResource("SphereMesh_dqkch")
 
 [node name="Patita" type="MeshInstance3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26606002, -0.71972114, 0.15013906)
+material_override = SubResource("StandardMaterial3D_tuyoq")
 mesh = SubResource("CylinderMesh_qhqgy")
 
 [node name="uña" type="MeshInstance3D" parent="Body/Patita"]
@@ -171,6 +190,7 @@ mesh = SubResource("CylinderMesh_3vyb7")
 
 [node name="Patita2" type="MeshInstance3D" parent="Body"]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29058012, -0.71972114, 0.150139)
+material_override = SubResource("StandardMaterial3D_fjrip")
 mesh = SubResource("CylinderMesh_qhqgy")
 
 [node name="uña" type="MeshInstance3D" parent="Body/Patita2"]
@@ -187,10 +207,12 @@ mesh = SubResource("CylinderMesh_3vyb7")
 
 [node name="Nalguita1" type="MeshInstance3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.133813, -0.36220258, -0.46879858)
+material_override = SubResource("StandardMaterial3D_smehm")
 mesh = SubResource("SphereMesh_qhqgy")
 
 [node name="Nalguita2" type="MeshInstance3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12608488, -0.36220258, -0.46879858)
+material_override = SubResource("StandardMaterial3D_ur7pv")
 mesh = SubResource("SphereMesh_qhqgy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

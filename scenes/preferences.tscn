@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0cxx168q8shn"]
+[gd_scene load_steps=5 format=3 uid="uid://d0cxx168q8shn"]
 
 [ext_resource type="Script" uid="uid://tnkjjxmqfjx" path="res://scripts/preferences.gd" id="1_gyaf3"]
+[ext_resource type="Texture2D" uid="uid://bhk1embnp5un6" path="res://assets/coin/abstract_pattern_design_background_2007.jpg" id="2_8u7so"]
 [ext_resource type="Texture2D" uid="uid://bryj6t2uo42f0" path="res://assets/textures/bsod.png" id="2_pmysl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xl0yi"]
@@ -13,6 +14,17 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.40392157, 0.26666668, 0.09803922, 1)
 script = ExtResource("1_gyaf3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.23137255)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8u7so")
+expand_mode = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1

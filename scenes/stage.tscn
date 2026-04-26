@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://8pqgrnd6lwrg"]
+[gd_scene load_steps=28 format=3 uid="uid://8pqgrnd6lwrg"]
 
 [ext_resource type="PackedScene" uid="uid://buwbn7odiqhs7" path="res://scenes/player.tscn" id="1_8rem4"]
 [ext_resource type="PackedScene" uid="uid://cwi56ftenk66m" path="res://scenes/Arbusto1.tscn" id="1_kewym"]
@@ -11,12 +11,14 @@
 [ext_resource type="PackedScene" uid="uid://c12wpxuxjh2se" path="res://scenes/grass.tscn" id="4_yd2gm"]
 [ext_resource type="PackedScene" uid="uid://doavaer2ev1wd" path="res://scenes/stone.tscn" id="5_0hg5s"]
 [ext_resource type="AudioStream" uid="uid://cgxi3i36ix8lc" path="res://audio/gameplay.ogg" id="5_t30jk"]
+[ext_resource type="Texture2D" uid="uid://c0f37np2pf7y5" path="res://assets/textures/gravel_albedo.png" id="6_3bqjo"]
 [ext_resource type="PackedScene" uid="uid://cyic8yatnueq0" path="res://scenes/stone2.tscn" id="6_jl6nj"]
 [ext_resource type="PackedScene" uid="uid://yjg0oy5gew2o" path="res://scenes/power_up.tscn" id="8_1hwpr"]
 [ext_resource type="Script" uid="uid://ovuo4jgqsm16" path="res://scripts/power_ups.gd" id="8_jl6nj"]
 [ext_resource type="PackedScene" uid="uid://wmf2eu0uuhrg" path="res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.tscn" id="9_0hg5s"]
 [ext_resource type="PackedScene" uid="uid://bad2gcfjo0vgt" path="res://scenes/hud.tscn" id="10_0hg5s"]
 [ext_resource type="PackedScene" uid="uid://odiej0yinlr6" path="res://scenes/you_win.tscn" id="13_e38vs"]
+[ext_resource type="Texture2D" uid="uid://bsu00arl5db4b" path="res://assets/textures/ravine-cliff_height.png" id="13_nea6r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8rem4"]
 sky_top_color = Color(0.8862745, 0.5764706, 1, 1)
@@ -34,6 +36,9 @@ sky = SubResource("Sky_0hg5s")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_drh8o"]
+albedo_texture = ExtResource("6_3bqjo")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hg5s"]
 albedo_color = Color(0.55256206, 0.8682603, 0.4665426, 1)
 
@@ -43,6 +48,9 @@ size = Vector3(100, 0.1, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8rem4"]
 size = Vector3(100, 0.1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uw5rs"]
+albedo_texture = ExtResource("13_nea6r")
 
 [node name="Stage" type="Node3D"]
 script = ExtResource("1_yd2gm")
@@ -74,6 +82,7 @@ shadow_enabled = true
 environment = SubResource("Environment_kewym")
 
 [node name="Floor" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_drh8o")
 mesh = SubResource("BoxMesh_kewym")
 
 [node name="FloorStaticBody3D" type="StaticBody3D" parent="Floor"]
@@ -202,6 +211,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.787239, 0.05000305, 8.821
 
 [node name="MeshInstance3D30" parent="Decorations" instance=ExtResource("5_0hg5s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.923721, 0.05000305, -31.029821)
+material_override = SubResource("StandardMaterial3D_uw5rs")
 
 [node name="MeshInstance3D31" parent="Decorations" instance=ExtResource("5_0hg5s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.715347, 0.05000305, -12.986139)

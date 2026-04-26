@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://odiej0yinlr6"]
+[gd_scene load_steps=3 format=3 uid="uid://odiej0yinlr6"]
 
 [ext_resource type="Script" uid="uid://b5jel6na80jvp" path="res://scripts/you_win.gd" id="1_iblaa"]
+[ext_resource type="Texture2D" uid="uid://bhk1embnp5un6" path="res://assets/coin/abstract_pattern_design_background_2007.jpg" id="2_ibln8"]
 
 [node name="YouWin" type="Control"]
 process_mode = 2
@@ -12,6 +13,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_iblaa")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ibln8")
+expand_mode = 1
+
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -19,7 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.30980393, 0.3529412, 0.16078432, 1)
+color = Color(0.30980393, 0.3529412, 0.16078432, 0.5137255)
 
 [node name="Frase" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -30,8 +41,8 @@ grow_horizontal = 2
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/normal_font_size = 96
 bbcode_enabled = true
-text = "[rainbow][shake][wave]Haber Estudiao
-👌[/wave][/shake][/rainbow]"
+text = "[rainbow][shake][wave]VICTORY LAP!!
+[/wave][/shake][/rainbow]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -44,7 +55,7 @@ offset_right = 773.0
 offset_bottom = 385.0
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 30
-text = "Puntuación: "
+text = "Score: "
 vertical_alignment = 1
 
 [node name="RestartButton" type="Button" parent="."]
@@ -61,7 +72,7 @@ offset_bottom = -154.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 32
-text = "Reiniciar"
+text = "RESTART"
 
 [node name="ExitButton" type="Button" parent="."]
 layout_mode = 1
@@ -77,7 +88,7 @@ offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 32
-text = "Exit"
+text = "EXIT"
 
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

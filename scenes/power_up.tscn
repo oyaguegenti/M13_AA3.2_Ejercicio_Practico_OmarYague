@@ -1,14 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://yjg0oy5gew2o"]
+[gd_scene load_steps=9 format=3 uid="uid://yjg0oy5gew2o"]
 
 [ext_resource type="Script" uid="uid://cxy3lfslcdlbw" path="res://scripts/power_up.gd" id="1_j7my0"]
+[ext_resource type="Texture2D" uid="uid://dg08x8p4jbdvi" path="res://assets/coin/gold.jpg" id="2_ig136"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gi7kc"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7my0"]
-albedo_color = Color(0.9555933, 0.8619818, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6iuya"]
+albedo_color = Color(1.697393, 1.697393, 0.6421465, 1)
+albedo_texture = ExtResource("2_ig136")
+albedo_texture_force_srgb = true
 
-[sub_resource type="SphereMesh" id="SphereMesh_ig136"]
-material = SubResource("StandardMaterial3D_j7my0")
+[sub_resource type="CylinderMesh" id="CylinderMesh_ig136"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j7my0"]
 emission_shape = 1
@@ -17,6 +19,9 @@ velocity_pivot = Vector3(0, 1, 0)
 direction = Vector3(0, 1, 0)
 initial_velocity_min = 4.0
 initial_velocity_max = 8.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7my0"]
+albedo_color = Color(0.9555933, 0.8619818, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_6iuya"]
 material = SubResource("StandardMaterial3D_j7my0")
@@ -34,7 +39,9 @@ script = ExtResource("1_j7my0")
 shape = SubResource("BoxShape3D_gi7kc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_ig136")
+transform = Transform3D(0.8850057, 0, 0, 0, 5.5132434e-05, 0.8431159, 0, -0.03360602, 0.0013831854, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_6iuya")
+mesh = SubResource("CylinderMesh_ig136")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 emitting = false

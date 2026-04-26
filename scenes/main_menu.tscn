@@ -44,7 +44,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/normal_font_size = 96
 bbcode_enabled = true
-text = "[rainbow][wave][center]m-ENTI-roso[/center][/wave][/rainbow]"
+text = "[rainbow][wave][center]Coin Rush[/center][/wave][/rainbow]"
 
 [node name="NameLabel" type="Label" parent="."]
 layout_mode = 1
@@ -58,7 +58,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 48
-text = "Introduce tu nombre"
+text = "Enter your name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -76,7 +76,7 @@ offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 24
-placeholder_text = "Tu_Nombre"
+placeholder_text = "Your_Name"
 alignment = 1
 
 [node name="InfoLabel" type="Label" parent="."]
@@ -110,7 +110,8 @@ offset_bottom = -104.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 32
-text = "JUGAR"
+text = "PLAY
+"
 
 [node name="CreditsButton" type="Button" parent="."]
 layout_mode = 1
@@ -140,7 +141,7 @@ offset_right = -24.0
 offset_bottom = -24.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Tabla de Records"
+text = "Records"
 
 [node name="ExitButton" type="Button" parent="."]
 layout_mode = 1

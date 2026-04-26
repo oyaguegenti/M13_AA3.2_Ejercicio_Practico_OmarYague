@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bad2gcfjo0vgt"]
+[gd_scene load_steps=3 format=3 uid="uid://bad2gcfjo0vgt"]
 
 [ext_resource type="Script" uid="uid://cq4ui2q71j4jx" path="res://scripts/hud.gd" id="1_ahhtf"]
+[ext_resource type="Texture2D" uid="uid://bhk1embnp5un6" path="res://assets/coin/abstract_pattern_design_background_2007.jpg" id="2_oo0fn"]
 
 [node name="hud" type="CanvasLayer"]
 script = ExtResource("1_ahhtf")
@@ -49,13 +50,22 @@ theme_override_font_sizes/font_size = 24
 
 [node name="GameOverPanel" type="Panel" parent="."]
 process_mode = 2
-visible = false
 modulate = Color(1, 1, 1, 0.8627451)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="GameOverPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oo0fn")
+expand_mode = 1
 
 [node name="ColorRect" type="ColorRect" parent="GameOverPanel"]
 layout_mode = 1
@@ -64,7 +74,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0.3882353, 0.28627452, 1)
+color = Color(1, 0.3882353, 0.28627452, 0.64705884)
 
 [node name="CenterContainer" type="CenterContainer" parent="GameOverPanel"]
 custom_minimum_size = Vector2(1200, 400)
@@ -91,7 +101,7 @@ layout_mode = 2
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/normal_font_size = 90
 bbcode_enabled = true
-text = "Game Over
+text = "LOSER...
 "
 fit_content = true
 horizontal_alignment = 1
@@ -104,6 +114,6 @@ layout_mode = 2
 [node name="RestartButton" type="Button" parent="GameOverPanel/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Reiniciar"
+text = "RESTART"
 
 [connection signal="pressed" from="GameOverPanel/CenterContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

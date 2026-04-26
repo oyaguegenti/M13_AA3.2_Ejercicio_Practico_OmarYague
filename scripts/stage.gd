@@ -9,12 +9,12 @@ extends Node3D
 @onready var coin_sfx: AudioStreamPlayer = $CoinSfx
 
 var frases = [
-	"Sigue tus sueños",
-	"Vais a aprobar la Vertical",
-	"Si repites esta asignatura es por tu bien",
-	"Tienes muchos amigos",
+	"Queda un mes de curso!",
+	"Acabare el curso limpio",
+	"No me quedara ninguna",
+	"Triumfaras con el proyecto",
 	"Prácticas remuneradas",
-	"Richard será amable en la Vertical"
+	"Los profes seran amables en la release"
 ]
 
 func _ready():

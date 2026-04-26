@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://s0bub4x1bjmn"]
+[gd_scene load_steps=5 format=3 uid="uid://s0bub4x1bjmn"]
 
 [ext_resource type="Script" uid="uid://dwnn1cyae0re3" path="res://scripts/records_panel.gd" id="1_vve43"]
+[ext_resource type="Texture2D" uid="uid://bhk1embnp5un6" path="res://assets/coin/abstract_pattern_design_background_2007.jpg" id="2_7bh6o"]
 [ext_resource type="Texture2D" uid="uid://bryj6t2uo42f0" path="res://assets/textures/bsod.png" id="2_eng3x"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xl0yi"]
@@ -13,6 +14,17 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.3962677, 0.20814276, 0.45847833, 1)
 script = ExtResource("1_vve43")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.2)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7bh6o")
+expand_mode = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -89,7 +101,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 32
-text = "Historial Completo"
+text = "History"
 horizontal_alignment = 1
 
 [node name="HSeparator2" type="HSeparator" parent="CenterContainer/VBoxContainer/ColumnsContainer/HistoryColumn"]
