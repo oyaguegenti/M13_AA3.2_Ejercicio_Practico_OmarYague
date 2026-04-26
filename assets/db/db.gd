@@ -5,7 +5,6 @@ extends Node
 var db: SQLite
 var id_user: int = -1
 
-
 func _ready() -> void:
 	db = SQLite.new()
 	db.path = data_base_file
@@ -13,7 +12,6 @@ func _ready() -> void:
 
 	create_users_table()
 	create_scores_table()
-
 
 func create_users_table() -> void:
 	var query := "
@@ -25,11 +23,11 @@ func create_users_table() -> void:
 	"
 	db.query(query)
 
-
 func create_scores_table() -> void:
 	var query := "
 	CREATE TABLE IF NOT EXISTS scores (
 		id_score INTEGER PRIMARY KEY AUTOINCREMENT,
+		score_ms INTEGER NOT NULL,
 		coins INTEGER NOT NULL,
 		game_date DATETIME DEFAULT CURRENT_TIMESTAMP,
 		id_user INTEGER NOT NULL,
@@ -37,7 +35,6 @@ func create_scores_table() -> void:
 	);
 	"
 	db.query(query)
-
 
 func insert_user(username: String) -> int:
 	var clean_username := username.strip_edges()
@@ -55,9 +52,8 @@ func insert_user(username: String) -> int:
 	id_user = db.last_insert_rowid
 	return id_user
 
-
-func insert_score(user_id: int, coins: int) -> bool:
-	var query := "INSERT INTO scores (id_user, coins) VALUES (%d, %d);" % [user_id, coins]
+func insert_score(user_id: int, score_ms: int, coins: int) -> bool:
+	var query := "INSERT INTO scores (id_user, score_ms, coins) VALUES (%d, %d, %d);" % [user_id, score_ms, coins]
 	var ok := db.query(query)
 
 	if not ok:
@@ -66,25 +62,24 @@ func insert_score(user_id: int, coins: int) -> bool:
 
 	return true
 
-
-func save_score() -> bool:
+func save_score(score_ms: int, coins: int) -> bool:
 	if id_user <= 0:
 		push_error("ERROR: No hay usuario activo")
 		return false
 
-	return insert_score(id_user, Globals.coins)
-
+	return insert_score(id_user, score_ms, coins)
 
 func get_top_scores(limit: int = 10) -> Array:
 	var query := "
 	SELECT
 		u.username,
+		s.score_ms,
 		s.coins,
 		s.game_date
 	FROM scores s
 	JOIN users u
 		ON s.id_user = u.id_user
-	ORDER BY s.coins DESC, s.game_date DESC
+	ORDER BY s.score_ms DESC, s.game_date DESC
 	LIMIT %d;
 	" % limit
 
@@ -96,11 +91,11 @@ func get_top_scores(limit: int = 10) -> Array:
 
 	return db.query_result
 
-
 func get_all_scores() -> Array:
 	var query := "
 	SELECT
 		u.username,
+		s.score_ms,
 		s.coins,
 		s.game_date
 	FROM scores s

@@ -1,6 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://buwbn7odiqhs7"]
+[gd_scene load_steps=20 format=3 uid="uid://buwbn7odiqhs7"]
 
-[ext_resource type="Script" uid="uid://dkkbg2hpblv7n" path="res://scenes/player.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://dkkbg2hpblv7n" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="AudioStream" uid="uid://duf0pmym8ln4c" path="res://audio/footsteps.wav" id="2_g2els"]
+[ext_resource type="AudioStream" uid="uid://cwb5rtaptwr0j" path="res://audio/jump.wav" id="3_qhqgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
 
@@ -53,6 +55,33 @@ material = SubResource("StandardMaterial3D_dqkch")
 radius = 0.2
 height = 0.4
 
+[sub_resource type="Animation" id="Animation_g2els"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Nalguita1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.133813, -0.36220258, -0.46879858)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body/Nalguita2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.12608488, -0.36220258, -0.46879858)]
+}
+
 [sub_resource type="Animation" id="Animation_3vyb7"]
 resource_name = "walk"
 loop_mode = 1
@@ -79,33 +108,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(-0.12608488, -0.36220258, -0.46879858), Vector3(-0.21299453, -0.36220258, -0.46879855), Vector3(-0.12608488, -0.36220258, -0.46879858)]
-}
-
-[sub_resource type="Animation" id="Animation_g2els"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body/Nalguita1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.133813, -0.36220258, -0.46879858)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body/Nalguita2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.12608488, -0.36220258, -0.46879858)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qhqgy"]
@@ -196,3 +198,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_qhqgy")
 }
 autoplay = "walk"
+
+[node name="FootstepSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_g2els")
+bus = &"SFX"
+
+[node name="JumpSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qhqgy")
+bus = &"SFX"

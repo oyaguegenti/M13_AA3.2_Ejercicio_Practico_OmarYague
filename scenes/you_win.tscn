@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://odiej0yinlr6"]
 
-[ext_resource type="Script" uid="uid://b5jel6na80jvp" path="res://scenes/you_win.gd" id="1_iblaa"]
+[ext_resource type="Script" uid="uid://b5jel6na80jvp" path="res://scripts/you_win.gd" id="1_iblaa"]
 
 [node name="YouWin" type="Control"]
 process_mode = 2
@@ -11,6 +11,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_iblaa")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.30980393, 0.3529412, 0.16078432, 1)
 
 [node name="Frase" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -24,6 +33,18 @@ bbcode_enabled = true
 text = "[rainbow][shake][wave]Haber Estudiao
 👌[/wave][/shake][/rainbow]"
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FinalScore" type="Label" parent="."]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 0
+offset_left = 373.0
+offset_top = 285.0
+offset_right = 773.0
+offset_bottom = 385.0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 30
+text = "Puntuación: "
 vertical_alignment = 1
 
 [node name="RestartButton" type="Button" parent="."]

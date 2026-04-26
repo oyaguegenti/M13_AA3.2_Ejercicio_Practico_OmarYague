@@ -1,0 +1,132 @@
+[gd_scene load_steps=4 format=3 uid="uid://s0bub4x1bjmn"]
+
+[ext_resource type="Script" uid="uid://dwnn1cyae0re3" path="res://scripts/records_panel.gd" id="1_vve43"]
+[ext_resource type="Texture2D" uid="uid://bryj6t2uo42f0" path="res://assets/textures/bsod.png" id="2_eng3x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xl0yi"]
+
+[node name="Records" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3962677, 0.20814276, 0.45847833, 1)
+script = ExtResource("1_vve43")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Scores" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[rainbow][shake][wave]Scores[/wave][/shake][/rainbow]"
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xl0yi")
+
+[node name="ColumnsContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TopColumn" type="VBoxContainer" parent="CenterContainer/VBoxContainer/ColumnsContainer"]
+custom_minimum_size = Vector2(350, 250)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer/ColumnsContainer/TopColumn"]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+text = "Top 10"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="CenterContainer/VBoxContainer/ColumnsContainer/TopColumn"]
+layout_mode = 2
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xl0yi")
+
+[node name="TopScoresText" type="RichTextLabel" parent="CenterContainer/VBoxContainer/ColumnsContainer/TopColumn"]
+custom_minimum_size = Vector2(350, 325)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 22
+text = "1. Omar - ⏱️ 52 s - 🪙 5
+1. Omar - ⏱️ 52 s - 🪙 5
+1. Omar - ⏱️ 52 s - 🪙 5
+1. Omar - ⏱️ 52 s - 🪙 5
+1. Omar - ⏱️ 52 s - 🪙 5
+1. Omar - ⏱️ 52 s - 🪙 5
+1. Omar - ⏱️ 52 s - 🪙 5
+1. Omar - ⏱️ 52 s - 🪙 5
+1. Omar - ⏱️ 52 s - 🪙 5
+1. Omar - ⏱️ 52 s - 🪙 5"
+horizontal_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="CenterContainer/VBoxContainer/ColumnsContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="HistoryColumn" type="VBoxContainer" parent="CenterContainer/VBoxContainer/ColumnsContainer"]
+custom_minimum_size = Vector2(350, 250)
+layout_mode = 2
+
+[node name="ScreenTitle" type="Label" parent="CenterContainer/VBoxContainer/ColumnsContainer/HistoryColumn"]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+text = "Historial Completo"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="CenterContainer/VBoxContainer/ColumnsContainer/HistoryColumn"]
+layout_mode = 2
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xl0yi")
+
+[node name="HistoryScroll" type="ScrollContainer" parent="CenterContainer/VBoxContainer/ColumnsContainer/HistoryColumn"]
+custom_minimum_size = Vector2(350, 300)
+layout_mode = 2
+
+[node name="AllScoresText" type="RichTextLabel" parent="CenterContainer/VBoxContainer/ColumnsContainer/HistoryColumn/HistoryScroll"]
+custom_minimum_size = Vector2(350, 800)
+layout_mode = 2
+text = "text 🪙 
+"
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xl0yi")
+
+[node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(160, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[node name="BSOD" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_eng3x")
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

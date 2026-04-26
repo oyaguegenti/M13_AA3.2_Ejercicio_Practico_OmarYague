@@ -15,9 +15,13 @@ run/main_scene="uid://beai3q5qpujr4"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://audio/default_bus_layout.tres"
+
 [autoload]
 
-Globals="*res://scripts/globals.tscn"
+Globals="*res://scenes/globals.tscn"
 DataBase="*res://assets/db/data_base.tscn"
 
 [display]

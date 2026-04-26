@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c12wpxuxjh2se" path="res://scenes/grass.tscn" id="4_6vm3t"]
 [ext_resource type="PackedScene" uid="uid://doavaer2ev1wd" path="res://scenes/stone.tscn" id="5_8efq7"]
 [ext_resource type="PackedScene" uid="uid://cyic8yatnueq0" path="res://scenes/stone2.tscn" id="6_da6cc"]
-[ext_resource type="Script" uid="uid://dolw51rstii58" path="res://scenes/camera_pivot.gd" id="7_1tmhi"]
+[ext_resource type="Script" uid="uid://dolw51rstii58" path="res://scripts/camera_pivot.gd" id="7_1tmhi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o5a4c"]
 sky_top_color = Color(0.8862745, 0.5764706, 1, 1)

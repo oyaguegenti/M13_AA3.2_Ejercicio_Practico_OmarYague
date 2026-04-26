@@ -1,15 +1,19 @@
-[gd_scene load_steps=20 format=3 uid="uid://8pqgrnd6lwrg"]
+[gd_scene load_steps=24 format=3 uid="uid://8pqgrnd6lwrg"]
 
 [ext_resource type="PackedScene" uid="uid://buwbn7odiqhs7" path="res://scenes/player.tscn" id="1_8rem4"]
 [ext_resource type="PackedScene" uid="uid://cwi56ftenk66m" path="res://scenes/Arbusto1.tscn" id="1_kewym"]
-[ext_resource type="Script" uid="uid://baiipu6a6gkd2" path="res://scenes/stage.gd" id="1_yd2gm"]
+[ext_resource type="Script" uid="uid://baiipu6a6gkd2" path="res://scripts/stage.gd" id="1_yd2gm"]
 [ext_resource type="PackedScene" uid="uid://crhmpaiesw46r" path="res://scenes/arbusto2.tscn" id="2_1hwpr"]
+[ext_resource type="AudioStream" uid="uid://yrh3mugmhxt5" path="res://audio/coin.wav" id="2_xfx4c"]
+[ext_resource type="AudioStream" uid="uid://c1lhvm5upjq23" path="res://audio/lose.ogg" id="3_5sts7"]
 [ext_resource type="PackedScene" uid="uid://d0e2evxpykh5x" path="res://scenes/grass2.tscn" id="3_dexii"]
+[ext_resource type="AudioStream" uid="uid://blntw5gheosp0" path="res://audio/win.ogg" id="4_ddp0b"]
 [ext_resource type="PackedScene" uid="uid://c12wpxuxjh2se" path="res://scenes/grass.tscn" id="4_yd2gm"]
 [ext_resource type="PackedScene" uid="uid://doavaer2ev1wd" path="res://scenes/stone.tscn" id="5_0hg5s"]
+[ext_resource type="AudioStream" uid="uid://cgxi3i36ix8lc" path="res://audio/gameplay.ogg" id="5_t30jk"]
 [ext_resource type="PackedScene" uid="uid://cyic8yatnueq0" path="res://scenes/stone2.tscn" id="6_jl6nj"]
 [ext_resource type="PackedScene" uid="uid://yjg0oy5gew2o" path="res://scenes/power_up.tscn" id="8_1hwpr"]
-[ext_resource type="Script" uid="uid://ovuo4jgqsm16" path="res://scenes/power_ups.gd" id="8_jl6nj"]
+[ext_resource type="Script" uid="uid://ovuo4jgqsm16" path="res://scripts/power_ups.gd" id="8_jl6nj"]
 [ext_resource type="PackedScene" uid="uid://wmf2eu0uuhrg" path="res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.tscn" id="9_0hg5s"]
 [ext_resource type="PackedScene" uid="uid://bad2gcfjo0vgt" path="res://scenes/hud.tscn" id="10_0hg5s"]
 [ext_resource type="PackedScene" uid="uid://odiej0yinlr6" path="res://scenes/you_win.tscn" id="13_e38vs"]
@@ -42,6 +46,24 @@ size = Vector3(100, 0.1, 100)
 
 [node name="Stage" type="Node3D"]
 script = ExtResource("1_yd2gm")
+
+[node name="CoinSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_xfx4c")
+bus = &"SFX"
+
+[node name="LoseMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 2
+stream = ExtResource("3_5sts7")
+bus = &"SFX"
+
+[node name="WinMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 2
+stream = ExtResource("4_ddp0b")
+bus = &"SFX"
+
+[node name="GameplayMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_t30jk")
+bus = &"Music"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.5459598, 0.5147573, -0.6610241, -0.8363599, -0.28843316, 0.46616405, 0.04930007, 0.80736077, 0.58799523, 0, -2.952283, 0)
@@ -194,16 +216,16 @@ script = ExtResource("8_jl6nj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5556235, -3.8436244)
 
 [node name="PowerUp2" parent="PowerUps" instance=ExtResource("8_1hwpr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.042138, 0.049999237, 40.434586)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.042138, 0.69220614, 40.434586)
 
 [node name="PowerUp3" parent="PowerUps" instance=ExtResource("8_1hwpr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.343132, 0.05000305, 36.925964)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.343132, 0.8129208, 36.925964)
 
 [node name="PowerUp4" parent="PowerUps" instance=ExtResource("8_1hwpr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.058222, 0.049999237, -37.730225)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.058222, 0.8550246, -37.730225)
 
 [node name="PowerUp5" parent="PowerUps" instance=ExtResource("8_1hwpr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.446857, 0.049999237, -14.294807)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.446857, 1.0815451, -14.294807)
 
 [node name="Player" parent="." instance=ExtResource("1_8rem4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.120517254, 1.1404315, -1.2893701)

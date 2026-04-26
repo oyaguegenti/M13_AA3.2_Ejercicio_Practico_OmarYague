@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://beai3q5qpujr4"]
+[gd_scene load_steps=7 format=3 uid="uid://beai3q5qpujr4"]
 
-[ext_resource type="Script" uid="uid://b85urpln6hkbk" path="res://scenes/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://b85urpln6hkbk" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="PackedScene" uid="uid://c1nigk8qiutr5" path="res://scenes/credits.tscn" id="2_8ln24"]
 [ext_resource type="PackedScene" uid="uid://jdp0anxr2hvg" path="res://scenes/background.tscn" id="2_ekxnf"]
 [ext_resource type="PackedScene" uid="uid://d0cxx168q8shn" path="res://scenes/preferences.tscn" id="3_bqqt6"]
+[ext_resource type="PackedScene" uid="uid://s0bub4x1bjmn" path="res://scenes/records.tscn" id="4_wu84c"]
+[ext_resource type="AudioStream" uid="uid://d4iqc5wnmssqw" path="res://audio/background_music.ogg" id="6_rtw2f"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -12,6 +15,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l6cm7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.07058824, 0.4862745, 0.43137255, 0.5019608)
 
 [node name="Background" type="CanvasLayer" parent="."]
 
@@ -27,11 +39,12 @@ offset_top = -294.0
 offset_bottom = -112.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.99164903, 1.0020404)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/normal_font_size = 96
 bbcode_enabled = true
-text = "[rainbow][wave][center]m-enti-roso[/center][/wave][/rainbow]"
+text = "[rainbow][wave][center]m-ENTI-roso[/center][/wave][/rainbow]"
 
 [node name="NameLabel" type="Label" parent="."]
 layout_mode = 1
@@ -99,6 +112,21 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 32
 text = "JUGAR"
 
+[node name="CreditsButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -211.0
+offset_top = -169.0
+offset_right = -24.0
+offset_bottom = -106.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Credits"
+
 [node name="RecordsButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 3
@@ -143,7 +171,24 @@ text = "📎"
 visible = false
 layout_mode = 1
 
+[node name="Records" parent="." instance=ExtResource("4_wu84c")]
+visible = false
+layout_mode = 1
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Credits" parent="." instance=ExtResource("2_8ln24")]
+visible = false
+layout_mode = 1
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_rtw2f")
+autoplay = true
+bus = &"Music"
+
 [connection signal="text_submitted" from="Name" to="." method="_on_name_text_submitted"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="RecordsButton" to="." method="_on_records_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="PreferencesButton" to="." method="_on_preferences_button_pressed"]

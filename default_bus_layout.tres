@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://wbkf612nem6s"]
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://bkueacsa5exmg"]
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_j3pel"]
 resource_name = "Reverb"
@@ -6,11 +6,12 @@ room_size = 0.88
 damping = 0.64
 
 [resource]
+bus/0/send = &"SFX"
 bus/1/name = &"Music"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = 0.0
+bus/1/volume_db = -0.0016212463
 bus/1/send = &"Master"
 bus/1/effect/0/effect = SubResource("AudioEffectReverb_j3pel")
 bus/1/effect/0/enabled = true
